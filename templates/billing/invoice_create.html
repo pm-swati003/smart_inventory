@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create Invoice</h2>
+
+<form method="post">{% csrf_token %}
+  {{ form.as_p }}
+
+  <h3>Items</h3>
+  {{ formset.management_form }}
+  <table>
+    <tr><th>Product</th><th>Qty</th><th>Price</th><th>DELETE</th></tr>
+    {% for form in formset %}
+    <tr>
+      <td>{{ form.product }}</td>
+      <td>{{ form.quantity }}</td>
+      <td>{{ form.price }}</td>
+      <td>{% if form.instance.pk %}{{ form.DELETE }}{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <button type="submit">Create Invoice</button>
+</form>
+{% endblock %}

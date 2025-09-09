@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Invoices</h2>
+<p><a href="{% url 'billing:invoice_create' %}">Create Invoice</a></p>
+<table>
+  <tr><th>Invoice No</th><th>Customer</th><th>Total</th><th>Date</th></tr>
+  {% for inv in invoices %}
+  <tr>
+    <td><a href="{% url 'billing:invoice_detail' inv.pk %}">{{ inv.invoice_no }}</a></td>
+    <td>{{ inv.customer }}</td>
+    <td>{{ inv.total }}</td>
+    <td>{{ inv.created_at|date:"SHORT_DATETIME_FORMAT" }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="4">No invoices</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

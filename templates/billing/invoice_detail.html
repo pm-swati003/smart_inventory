@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Invoice: {{ invoice.invoice_no }}</h2>
+<p>Customer: {{ invoice.customer }}</p>
+<p>Date: {{ invoice.created_at }}</p>
+<table>
+  <tr><th>Product</th><th>Qty</th><th>Price</th><th>Subtotal</th></tr>
+  {% for it in invoice.items.all %}
+  <tr>
+    <td>{{ it.product }}</td>
+    <td>{{ it.quantity }}</td>
+    <td>{{ it.price }}</td>
+    <td>{{ it.subtotal }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<p>Tax: {{ invoice.tax }}</p>
+<p>Discount: {{ invoice.discount }}</p>
+<p><strong>Total: {{ invoice.total }}</strong></p>
+{% endblock %}
