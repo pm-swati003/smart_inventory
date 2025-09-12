@@ -3,7 +3,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "replace-this-with-a-secure-key-for-prod"
+SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key")
 DEBUG = False
 
 ALLOWED_HOSTS = ['smart_inventory.onrender.com']
