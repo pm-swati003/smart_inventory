@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "replace-this-with-a-secure-key-for-prod"
 DEBUG = True
 
-ALLOWED_HOSTS = ['Swati2003.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django.contrib.admin",
